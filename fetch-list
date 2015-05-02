@@ -1,0 +1,2 @@
+#!/bin/sh
+wget 'https://groups.google.com/forum/feed/leeds-hack-space/msgs/rss.xml?num=15' -O topics.xml
