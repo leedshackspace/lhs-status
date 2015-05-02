@@ -14,10 +14,11 @@ var cam = function(el) {
 //	'https://www.leedshackspace.org.uk/livecam7.jpg',
 	       ];
     var n = 0;
-    var img = el.querySelector('img');
-    console.log(img);
     function next() { 
 	n=(n+1)%cams.length;
+	var img = new Image();
+	img.onload = function() { el.replaceChild(img, el.querySelector('img')); };
+	img.onerror = function() { console.log("error: "+img.src); next(); };
 	img.src=cams[n];
     }
     setInterval(next, 15000);
