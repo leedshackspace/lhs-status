@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<style>
+  iframe[id^='twitter-widget-'] {
+    width:81% !important; 
+    transform: scale(1.25) translate(9%,9%);
+  }
+  iframe[id^='twitter-widget-'] .expand { background: red }
+
+   @keyframes blink {  
+      0% { opacity: 1.0; }
+      30% { opacity: 0.0; }
+      100% { opacity: 1.0; }
+    }
+    @-webkit-keyframes blink {
+      0% { opacity: 1.0; }
+      30% { opacity: 0.0; }
+      100% { opacity: 1.0; }
+    }
+    .blink {
+      animation: blink 2s step-start 0s infinite;
+      -webkit-animation: blink 2s step-start 0s infinite;
+            padding-top: 4em;
+    }
+  body {
+    padding: 0; margin: 0;margin-left: -3px;
+    width: 1362px;
+    height: 768px;
+    overflow: hidden;
+    font-family: sans-serif;
+    font-size: 1.1em;
+    background-color: black;
+    color: white;
+  }
+  #space {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #5f9fbc;
+/*     padding-right: 3em; */
+  }
+  #time {
+    position: absolute;
+    top: 6px; left: 1254px;
+    font-family: monospace;
+    font-size: 1.2em;
+  }
+  div.pane {
+    position: absolute;
+    width: 640px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: #333;
+    margin: 3px;
+  /*color: #ddd;*/
+    color: #5f9fbc;
+  }
+table { border-spacing: 0}
+div.rss { padding: 8px 12px 0 0.4em }
+a:link { color: #87C2ED; text-decoration: none }
+a:hover { text-decoration: underline; }
+a:visited { color: #707070; }
+.rss-title {font-weight: bold; font-size: 1.1em; color: #ddd;}
+.rss-author { margin-left: 1em; }
+.rss-date { float: right; }
+#foo { font-family: sans-serif; font-size: 0.8em; overflow: hidden; width: 400px;
+    border-radius: 5px;
+background-color: #333;
+color: #CFCFCF;
+ }
+
+  #irc { width: 708px; height: 416px; left: 0px; top: 346px; }
+  #twitter { width: 708px; height: 300px; left: 0px; top: 36px; }
+  #list { height: 234px; left: 718px; top: 36px; }
+  #cam { width: 640px; height: 480px; left: 718px; top: 282px; }
+  #cam img {width: 100%; height: 100%; object-fit: contain; }
+  #header { width: 1254px; overflow: hidden; height: 36px; font-size: 1.3em; padding-left: 5px; padding-bottom: 0; margin-bottom: 0; white-space: nowrap; text-overflow: ellipsis; }
+  #here:before { content: "· "; }
+  #status { display: none }
+/*  #here { overflow: hidden; text-overflow: ellipsis; } */
+</style>
+</head>
+<body>
+<div id="header">
+<img src="logo.svg" style="width:1.2em; height:1.2em; position: relative; top: 0.15em; left: 0.1em">
+<span id=space>Leeds Hackspace</span><span id=status> · <span id=temp></span> · <span id=state></span> <span id=here></span></span> <span id=time></span>
+</div>
+<table><tr><td>
+<div id="twitter" class=pane>
+<a class="twitter-timeline"  href="https://twitter.com/leedshackspace"
+   data-widget-id="549942374190055424"
+   data-chrome="noheader nofooter noscrollbar"
+   height=400>Tweets by @leedshackspace</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+<div id="irc" class=pane><center><h1 class=blink>FIXME: eye are see</h1></center></div>
+</td>
+<td>
+<div id="list" class=pane></div>
+<div id="cam" class=pane><img></div>
+<!--<div id="music" class=pane>Now playing</div>-->
+</td>
+</tr></table>
+<script src="rss.js"></script>
+<script src="date.js"></script>
+<script>
+  (function() {
+    var el=document.getElementById("list");
+    function draw() { rss("topics.xml"
+/* https://groups.google.com/forum/feed/leeds-hack-space/msgs/rss.xml?num=15 */
+, el); }
+    window.setTimeout(draw, 120*1000);
+    draw();
+  })();
+</script>
+
+<script src="cam.js"></script>
+<script>
+  (function() {
+    var el=document.getElementById("cam");
+    cam(el);
+})();
+</script>
+
+<script>window.setInterval(
+function(){
+  var h=document.querySelector("h1");
+  h.innerHTML=h.innerHTML.replace(
+    / .*/, Math.random()<.5?' eye are see':' aye arr sea');
+				 },30000);
+</script>
+
+<script src="status.js"></script>
+<script>getstatus()</script>
+
+</body>
+</html>
