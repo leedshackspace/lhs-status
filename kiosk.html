@@ -8,22 +8,6 @@
     transform: scale(1.25) translate(9%,9%);
   }
   iframe[id^='twitter-widget-'] .expand { background: red }
-
-   @keyframes blink {  
-      0% { opacity: 1.0; }
-      30% { opacity: 0.0; }
-      100% { opacity: 1.0; }
-    }
-    @-webkit-keyframes blink {
-      0% { opacity: 1.0; }
-      30% { opacity: 0.0; }
-      100% { opacity: 1.0; }
-    }
-    .blink {
-      animation: blink 2s step-start 0s infinite;
-      -webkit-animation: blink 2s step-start 0s infinite;
-            padding-top: 4em;
-    }
   body {
     padding: 0; margin: 0;margin-left: -3px;
     width: 1362px;
@@ -71,6 +55,11 @@ color: #CFCFCF;
  }
 
   #irc { width: 708px; height: 416px; left: 0px; top: 346px; }
+  #irc-frame {
+    border: 0;
+    width: 708px;
+    height: 416px;
+  }
   #twitter { width: 708px; height: 300px; left: 0px; top: 36px; }
   #list { height: 234px; left: 718px; top: 36px; }
   #cam { width: 640px; height: 480px; left: 718px; top: 282px; }
@@ -94,7 +83,9 @@ color: #CFCFCF;
    height=400>Tweets by @leedshackspace</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 </div>
-<div id="irc" class=pane><center><h1 class=blink>FIXME: eye are see</h1></center></div>
+<div id="irc" class=pane>
+  <iframe id="irc-frame" src="http://localhost:8080"></iframe>
+</div>
 </td>
 <td>
 <div id="list" class=pane></div>
