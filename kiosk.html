@@ -98,10 +98,12 @@ color: #CFCFCF;
 <script>
   (function() {
     var el=document.getElementById("list");
-    function draw() { rss("topics.xml"
-/* https://groups.google.com/forum/feed/leeds-hack-space/msgs/rss.xml?num=15 */
-, el); }
-    window.setTimeout(draw, 120*1000);
+    function draw() {
+      window.setTimeout(draw, 120*1000);
+      // topics.xml is reverse proxied via Apache to Google Groups
+      rss("topics.xml", el);
+      /*rss("https://groups.google.com/forum/feed/leeds-hack-space/msgs/rss.xml?num=15, el); */
+    }
     draw();
   })();
 </script>
