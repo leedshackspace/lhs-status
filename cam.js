@@ -7,14 +7,21 @@ var cam = function(el) {
         'http://wifihifi.hackspace:8082', // Cam 6, outside door
         'http://3dprinter.hackspace:8081', // Cam 7, 3D printer camera
     ];
-    var n = 0;
-    function next() { 
-	n=(n+1)%cams.length;
-	var img = new Image();
-	img.onload = function() { el.replaceChild(img, el.querySelector('img')); };
-	img.onerror = function() { console.log("error: "+img.src); next(); };
-	img.src=cams[n];
+    var currentIdx = 0;
+    function nextCam() {
+        currentIdx=(currentIdx+1)%cams.length;
+        var img = new Image();
+
+        img.onload = function() {
+            el.replaceChild(img, el.querySelector('img'));
+        };
+        img.onerror = function() {
+            console.error("Camera failed to load: " + img.src);
+            nextCam();
+        };
+
+        img.src = cams[currentIdx];
     }
-    setInterval(next, 15000);
-    next();
+    setInterval(nextCam, 15000);
+    nextCam();
 };
