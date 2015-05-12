@@ -88,7 +88,7 @@ MpdWrapper.prototype.parseStatus = function(msg) {
     */
 
 
-    // TODO: convert bits to numbers
+    // TODO: convert values to numbers
     return objectify(msg);
 }
 
@@ -99,7 +99,7 @@ MpdWrapper.prototype.getCurrentSong = function(cb /* err, status */) {
 }
 
 MpdWrapper.prototype.parseCurrentSong = function(msg) {
-    // TODO: convert stuff to numbers
+    // TODO: convert values to numbers where required
     return objectify(msg);
 }
 

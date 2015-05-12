@@ -12,12 +12,12 @@ console.log('Connecting to MPD server on ' + config.mpd.host + ':' + config.mpd.
 
 mpdw.on('error', function(err) {
     console.error(err);
-    // TODO: now what?
+    process.exit(1);
 });
 
 mpdw.on('end', function() {
     console.log('MPD server disconnected');
-    // TODO: now what?
+    process.exit(1);
 });
 
 mpdw.on('ready', function() {
@@ -36,7 +36,6 @@ mpdw.on('ready', function() {
 mpdw.on('update', handleUpdate);
 
 function handleUpdate(updateInfo) {
-    console.log('UPDATE: ' + JSON.stringify(updateInfo));
     io.emit('update', updateInfo);
 }
 
