@@ -1,7 +1,8 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset=utf-8>
+<meta charset="utf-8">
+<link rel="stylesheet" href="css/font-awesome.min.css">
 <style>
   iframe[id^='twitter-widget-'] {
     width:81% !important; 
@@ -29,7 +30,8 @@
     top: 6px; left: 1244px;
     font-family: monospace;
     font-size: 1.2em;
-    margin-left: 10px;
+    padding-left: 10px;
+    background-color: black;
   }
   div.pane {
     position: absolute;
@@ -76,6 +78,11 @@ color: #CFCFCF;
   .scroller-line {
     display: block;
     margin: 9px 0;
+  }
+  #nowplaying-icon {
+    font-size: 0.9em;
+    display: inline-block;
+    width: 20px;
   }
   @-webkit-keyframes scroller-scroll {
     45% {
@@ -125,7 +132,7 @@ color: #CFCFCF;
      · <span id="temp"></span> · <span id="state"></span> ·
     <div id="scroller">
       <span id="here" class="scroller-line"></span>
-      <span id="nowplaying" class="scroller-line">Now Playing text</span>
+      <span id="nowplaying" class="scroller-line"><span id="nowplaying-icon"></span> <span id="nowplaying-text">Now Playing: no info available :(</span></span>
     </div>
   </span>
   <span id="time"></span>
