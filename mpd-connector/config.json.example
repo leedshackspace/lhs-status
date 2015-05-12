@@ -1,0 +1,6 @@
+{
+    "mpd": {
+        "host": "wifihifi.hackspace",
+        "port": 6600
+    }
+}
