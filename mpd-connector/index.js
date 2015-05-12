@@ -1,7 +1,6 @@
-var mpd = require('mpd');
-var cmd = mpd.cmd;
 var config = require('./config.json');
 var MpdWrapper = require('./lib/MpdWrapper.js');
+var io = require('socket.io')(3030);
 
 var mpdw = new MpdWrapper({
     host: config.mpd.host,
@@ -38,4 +37,18 @@ mpdw.on('update', handleUpdate);
 
 function handleUpdate(updateInfo) {
     console.log('UPDATE: ' + JSON.stringify(updateInfo));
+    io.emit('update', updateInfo);
 }
+
+
+io.on('connection', function(socket) {
+    console.log('socket.io client connected');
+
+    mpdw.getInfo(function(err, info) {
+        if (err) {
+            return console.error(err);
+        }
+
+        socket.emit('update', info);
+    });
+});

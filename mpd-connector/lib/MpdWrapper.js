@@ -108,7 +108,9 @@ function objectify(str) {
     var lines = str.trim().split('\n');
     lines.forEach(function(line) {
         var lineParts = line.split(': ');
-        obj[lineParts[0]] = lineParts[1].trim();
+        if (lineParts.length > 1) {
+            obj[lineParts[0]] = lineParts[1].trim();
+        }
     });
     return obj;
 }
