@@ -26,9 +26,10 @@
   }
   #time {
     position: absolute;
-    top: 6px; left: 1254px;
+    top: 6px; left: 1244px;
     font-family: monospace;
     font-size: 1.2em;
+    margin-left: 10px;
   }
   div.pane {
     position: absolute;
@@ -65,15 +66,69 @@ color: #CFCFCF;
   #cam { width: 640px; height: 480px; left: 718px; top: 282px; }
   #cam img {width: 100%; height: 100%; object-fit: contain; }
   #header { width: 1254px; overflow: hidden; height: 36px; font-size: 1.3em; padding-left: 5px; padding-bottom: 0; margin-bottom: 0; white-space: nowrap; text-overflow: ellipsis; }
-  #here:before { content: "· "; }
   #status { display: none }
-/*  #here { overflow: hidden; text-overflow: ellipsis; } */
+  #scroller {
+    display: inline-block;
+    vertical-align: top;
+    -webkit-animation: scroller-scroll 20s infinite; /* Safari 4+ */
+    animation:         scroller-scroll 20s infinite; /* IE 10+, Fx 29+ */
+  }
+  .scroller-line {
+    display: block;
+    margin: 9px 0;
+  }
+  @-webkit-keyframes scroller-scroll {
+    45% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+    50% {
+      -webkit-transform: translateY(-32px);
+      transform: translateY(-32px);
+    }
+    95% {
+      -webkit-transform: translateY(-32px);
+      transform: translateY(-32px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+  @keyframes scroller-scroll {
+    45% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+    50% {
+      -webkit-transform: translateY(-32px);
+      transform: translateY(-32px);
+    }
+    95% {
+      -webkit-transform: translateY(-32px);
+      transform: translateY(-32px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+
+  /* #here { overflow: hidden; text-overflow: ellipsis; } */
 </style>
 </head>
 <body>
 <div id="header">
-<img src="logo.svg" style="width:1.2em; height:1.2em; position: relative; top: 0.15em; left: 0.1em">
-<span id=space>Leeds Hackspace</span><span id=status> · <span id=temp></span> · <span id=state></span> <span id=here></span></span> <span id=time></span>
+  <img src="logo.svg" style="width:1.2em; height:1.2em; position: relative; top: 0.15em; left: 0.1em">
+  <span id="space">Leeds Hackspace</span>
+  <span id="status">
+     · <span id="temp"></span> · <span id="state"></span> ·
+    <div id="scroller">
+      <span id="here" class="scroller-line"></span>
+      <span id="nowplaying" class="scroller-line">Now Playing text</span>
+    </div>
+  </span>
+  <span id="time"></span>
 </div>
 <table><tr><td>
 <div id="twitter" class=pane>
@@ -90,7 +145,6 @@ color: #CFCFCF;
 <td>
 <div id="list" class=pane></div>
 <div id="cam" class=pane><img></div>
-<!--<div id="music" class=pane>Now playing</div>-->
 </td>
 </tr></table>
 <script src="rss.js"></script>
@@ -126,6 +180,10 @@ function(){
 
 <script src="status.js"></script>
 <script>getstatus()</script>
+
+<script src="http://localhost:3030/socket.io/socket.io.js"></script>
+<script src="now-playing.js"></script>
+<script>new NowPlaying('nowplaying');</script>
 
 </body>
 </html>
