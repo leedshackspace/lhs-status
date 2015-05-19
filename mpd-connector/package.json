@@ -1,0 +1,16 @@
+{
+  "name": "mpd-connector",
+  "version": "0.0.0",
+  "description": "Connect to an MPD server and proxy events to clients via websocket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alex Silcock",
+  "private": true,
+  "dependencies": {
+    "async": "^0.9.0",
+    "mpd": "^1.3.0",
+    "socket.io": "^1.3.5"
+  }
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script type="text/javascript" src="http://localhost:3030/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io('http://localhost:3030');
+        socket.on('update', function(info) {
+            console.log(info);
+        });
+    </script>
+</head>
+<body>
+<p>This tests the MPD socket.io client. Look at the dev console for info</p>
+</body>
+</html>
