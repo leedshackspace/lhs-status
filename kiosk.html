@@ -1,193 +1,71 @@
 <!doctype html>
 <html>
-<head>
-<meta charset=utf-8>
-<style>
-  iframe[id^='twitter-widget-'] {
-    width:81% !important; 
-    transform: scale(1.25) translate(9%,9%);
-  }
-  iframe[id^='twitter-widget-'] .expand { background: red }
-  body {
-    padding: 0; margin: 0;margin-left: -3px;
-    width: 1362px;
-    height: 768px;
-    overflow: hidden;
-    font-family: sans-serif;
-    font-size: 1.1em;
-    background-color: black;
-    color: white;
-  }
-  #space {
-    font-weight: bold;
-    font-size: 1.2em;
-    color: #5f9fbc;
-/*     padding-right: 3em; */
-  }
-  #time {
-    position: absolute;
-    top: 6px; left: 1254px;
-    font-family: monospace;
-    font-size: 1.2em;
-  }
-  div.pane {
-    position: absolute;
-    width: 640px;
-    overflow: hidden;
-    border-radius: 5px;
-    background-color: #333;
-    margin: 3px;
-  /*color: #ddd;*/
-    color: #5f9fbc;
-  }
-table { border-spacing: 0}
-div.rss { padding: 8px 12px 0 0.4em }
-a:link { color: #87C2ED; text-decoration: none }
-a:hover { text-decoration: underline; }
-a:visited { color: #707070; }
-.rss-title {font-weight: bold; font-size: 1.1em; color: #ddd;}
-.rss-author { margin-left: 1em; }
-.rss-date { float: right; }
-#foo { font-family: sans-serif; font-size: 0.8em; overflow: hidden; width: 400px;
-    border-radius: 5px;
-background-color: #333;
-color: #CFCFCF;
- }
-
-  #irc { width: 708px; height: 416px; left: 0px; top: 346px; }
-  #irc-frame {
-    border: 0;
-    width: 708px;
-    height: 416px;
-  }
-  #twitter { width: 708px; height: 300px; left: 0px; top: 36px; }
-  #list { height: 234px; left: 718px; top: 36px; }
-  #cam { width: 640px; height: 480px; left: 718px; top: 282px; }
-  #cam img {width: 100%; height: 100%; object-fit: contain; }
-  #header { width: 1254px; overflow: hidden; height: 36px; font-size: 1.3em; padding-left: 5px; padding-bottom: 0; margin-bottom: 0; white-space: nowrap; text-overflow: ellipsis; }
-  #here:before { content: "· "; }
-  #status { display: none }
-/*  #here { overflow: hidden; text-overflow: ellipsis; } */
-
-  @keyframes bm-blink {
-    0% {
-      color: blue;
-      background-color: yellow;
-    }
-    50% {
-      color: yellow;
-      background-color: blue;
-    }
-    100% {
-      color: blue;
-      background-color: yellow;
-    }
-  }
-  @-webkit-keyframes bm-blink {
-    0% {
-      color: blue;
-      background-color: yellow;
-    }
-    50% {
-      color: yellow;
-      background-color: blue;
-    }
-    100% {
-      color: blue;
-      background-color: yellow;
-    }
-  }
-
-  #bigmessage {
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-  }
-
-  #bigmessage-text {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: white;
-    color: black;
-    font-size: 80px;
-    padding: 20px 0;
-    -webkit-animation-duration: 1000ms;
-    -webkit-animation-name: bm-blink;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-timing-function: steps(1);
-    animation-duration: 1000ms;
-    animation-name: bm-blink;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: steps(1);
-  }
-
-  #bigmessage.visible {
-    display: block;
-  }
-</style>
-</head>
-<body>
-<div id="header">
-<img src="logo.svg" style="width:1.2em; height:1.2em; position: relative; top: 0.15em; left: 0.1em">
-<span id=space>Leeds Hackspace</span><span id=status> · <span id=temp></span> · <span id=state></span> <span id=here></span></span> <span id=time></span>
-</div>
-<table><tr><td>
-<div id="twitter" class=pane>
-<a class="twitter-timeline"  href="https://twitter.com/leedshackspace"
-   data-widget-id="549942374190055424"
-   data-chrome="noheader nofooter noscrollbar"
-   height=400>Tweets by @leedshackspace</a>
+  <head>
+    <meta charset=utf-8>
+    <link rel="stylesheet" href="main.css">
+  </head>
+  <body>
+    <div id="header">
+      <img src="logo.svg" style="width:1.2em; height:1.2em; position: relative; top: 0.15em; left: 0.1em">
+      <span id=space>Leeds Hackspace</span><span id=status> · <span id=temp></span> · <span id=state></span> <span id=here></span></span> <span id=time></span>
+    </div>
+    <table>
+      <tr>
+	<td>
+	  <div id="twitter" class=pane>
+	    <a class="twitter-timeline"  href="https://twitter.com/leedshackspace"
+	       data-widget-id="549942374190055424"
+	       data-chrome="noheader nofooter noscrollbar"
+	       height=400>Tweets by @leedshackspace</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-</div>
-<div id="irc" class=pane>
-  <iframe id="irc-frame" src="http://localhost:8080"></iframe>
-</div>
-</td>
-<td>
-<div id="list" class=pane></div>
-<div id="cam" class=pane><img></div>
-<!--<div id="music" class=pane>Now playing</div>-->
-</td>
-</tr></table>
-<script src="rss.js"></script>
-<script src="date.js"></script>
-<script>
-  (function() {
-    var el=document.getElementById("list");
-    function draw() {
+	  </div>
+	  <script src="twitter.js"></script>
+	  <script>
+	    twitter_fixup(document.getElementById('twitter'), "twitter.css");
+	  </script>
+
+	  <div id="irc" class=pane>
+	    <iframe id="irc-frame" src="http://localhost:8080"></iframe>
+	  </div>
+	</td>
+	<td>
+	  <div id="list" class=pane></div>
+	  <div id="cam" class=pane><img></div>
+	  <!--<div id="music" class=pane>Now playing</div>-->
+	</td>
+      </tr>
+    </table>
+    <script src="rss.js"></script>
+    <script src="date.js"></script>
+    <script>
+      (function() {
+      var el=document.getElementById("list");
+      function draw() {
       window.setTimeout(draw, 120*1000);
       // topics.xml is reverse proxied via Apache to Google Groups
       rss("topics.xml", el);
-      /*rss("https://groups.google.com/forum/feed/leeds-hack-space/msgs/rss.xml?num=15, el); */
-    }
-    draw();
-  })();
-</script>
+      }
+      draw();
+      })();
+    </script>
 
-<script src="cam.js"></script>
-<script>
-  (function() {
-    var el=document.getElementById("cam");
-    cam(el);
-})();
-</script>
+    <script src="cam.js"></script>
+    <script>
+      (function() {
+      var el=document.getElementById("cam");
+      cam(el);
+      })();
+    </script>
 
-<script src="status.js"></script>
-<script>getstatus()</script>
+    <script src="status.js"></script>
+    <script>getstatus()</script>
 
-<script src="irc-command.js"></script>
+    <script src="irc-command.js"></script>
 
-<div id="bigmessage">
-  <div id="bigmessage-text"></div>
-</div>
-<script src="irc/bigtext.js"></script>
+    <div id="bigmessage">
+      <div id="bigmessage-text"></div>
+    </div>
+    <script src="irc/bigtext.js"></script>
 
-</body>
+  </body>
 </html>
