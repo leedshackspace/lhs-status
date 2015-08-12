@@ -1,34 +1,32 @@
 var cam = function(el) {
-    var cams = [//'https://www.leedshackspace.org.uk/cam1.jpg',
-//	'https://www.leedshackspace.org.uk/livecam2.jpg',
-//	'https://www.leedshackspace.org.uk/livecam3.jpg',
-//	'https://www.leedshackspace.org.uk/livecam4.jpg',
-	'http://gateway.hackspace:8082',
-	'http://gateway.hackspace:8083',
-	'http://gateway.hackspace:8084',
-//	'http://wifihifi.hackspace:8081',
-//	'http://wifihifi.hackspace:8082',
-	'http://3dprinter.hackspace:8081',
-//	'https://www.leedshackspace.org.uk/livecam5.jpg',
-//	'https://www.leedshackspace.org.uk/livecam6.jpg',
-//	'https://www.leedshackspace.org.uk/livecam7.jpg',
-	       ];
+    var cams = [
+        'http://gateway.hackspace:8082', // Cam 2, covering car park
+        'http://gateway.hackspace:8083', // Cam 3, by soldering station
+        'http://gateway.hackspace:8084', // Cam 4, internal door
+        'http://wifihifi.hackspace:8081', // Cam 5, on gateway cabinet
+        'http://wifihifi.hackspace:8082', // Cam 6, outside door
+        'http://3dprinter.hackspace:8081', // Cam 7, 3D printer camera
+    ];
+    
     var n = 0;
-    var backoff = 10;
-    function next() { 
-	n=(n+1)%cams.length;
-	var img = new Image();
-	img.onload = function() {
-	    backoff = 0;
-	    el.replaceChild(img, el.querySelector('img'));
-	};
-	img.onerror = function() {
-	    console.log("error: "+img.src);
-	    setTimeout(next, backoff);
+    var backoff = 0;
+
+    function nextCam() {
+        n = (n+1) % cams.length;
+        var img = new Image();
+        img.onload = function() {
+	    console.log("success");
+            el.replaceChild(img, el.querySelector('img'));
+        };
+        img.onerror = function() {
+            console.error("Camera failed to load: " + img.src);
+	    setTimeout(nextCam, backoff);
 	    backoff += 1000;
-	};
-	img.src=cams[n];
+        };
+
+        img.src = cams[n];
     }
-    setInterval(next, 15000);
-    next();
+
+    setInterval(nextCam, 15000);
+    nextCam();
 };

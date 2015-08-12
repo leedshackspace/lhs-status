@@ -6,7 +6,6 @@ function drawstatus(st) {
     var open = st.state.open;
     if (open) {
 	var people = st.sensors.people_now_present.names;
-//	people = ['Nav', 'Alex', 'Stanto', 'Paul', 'Matt', 'hippiegunnut', 'HEx', 'BuildTheRobots', 'cyberspice', 'foobar'];
 	document.getElementById('here').innerHTML = "Here ("+people.length+"): "+people.join(', ');
     } else {
 	document.getElementById('here').style.display = 'none';
