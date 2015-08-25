@@ -1,26 +1,3 @@
-function req(method, uri, headers, cb, body) {
-    var xhr = new XMLHttpRequest();
-    xhr.open(method, uri, true);
-    for (var i in headers) {
-        xhr.setRequestHeader(i, headers[i]);
-    }
-    xhr.onreadystatechange = function () {
-        switch (xhr.readyState) {
-            case 4: /* done */
-            var status = xhr.status.toString();
-            if (xhr.aborted) /* don't show errors for cancelled requests */
-                return;
-            if (status < 200 || status > 299)
-                alert("Error: "+method+" request for "+uri+(status?(" returned \""+xhr.statusText+"\" ("+status+")"):" could not be sent"));
-            else
-                cb(uri, xhr);
-            break;
-        }
-    }
-    xhr.send(body || null /* for IE */);
-    return xhr;
-}
-
 function xml2json(xml) { /* minimalist version, no arrays */
     var obj = {};
     
@@ -55,25 +32,60 @@ function el_with_class(type, parent, className, text) {
 }
 
 function rss(url, el) {
-    function parse(base,xhr) {
-	var xml = xhr.responseXML;
+    function parse() {
+	var xml = request.responseXML;
 	var items = xml.evaluate('//channel/item', xml, null, 
 				 XPathResult.ORDERED_NODE_ITERATOR_TYPE,
 				 null);
+
 	var item;
+	var threads={};
+	/* The idea here is as follows:
+	   (a) for each post, we have only subject, author, date and permalink to work with
+	   (b) a thread is all the posts with a given subject (ignoring a possible "Re: " prefix)
+	   (c) a thread's date is the date of its last post
+	   (d) threads are sorted by their date
+	   (d) within a thread, authors are listed in chronological order of their posts
+	   (e) a thread links to its last post
+	*/
 	while (item = items.iterateNext()) {
 	    var j = xml2json(item);
+	    
+	    var date=new Date(j.pubdate);
+	    var title = j.title.replace(/^Re: /,'');
+	    var author = j.author;
+	    var t = threads[title];
+	    if (!t)
+		t = { authors:[], link: j.link };
+	    if (!t.date || t.date < date)
+		t.date = date;
+	    t.authors.unshift(author);
+	    threads[title] = t;
+	}
+	var threadlist = [];
+	for (var i in threads) {
+	    if (!threads.hasOwnProperty(i))
+		continue;
+	    var t = threads[i];
+	    t.title = i;
+	    threadlist.push(t);
+	}
+	
+	threadlist.sort(function(a,b) { return b.date-a.date; });
+	
+	for (var i=0; i<threadlist.length; i++) {
+	    var j=threadlist[i];
 	    var ctr = el_with_class("div", el, "rss");
-	    el_with_class("span", ctr, "rss-date", fmtdate(j.pubdate))
+	    el_with_class("span", ctr, "rss-date", fmtdate(j.date));
 	    var link = el_with_class("a", ctr);
 	    link.href = j.link;
 	    el_with_class("span", link, "rss-title", j.title);
-	    el_with_class("div", ctr, "rss-author", j.author);
+	    el_with_class("div", ctr, "rss-author", j.authors.join(", "));
 	}
     }
-    
-    req("GET",
-	url,
-	[],
-	parse);
+
+    var request = new XMLHttpRequest();
+    request.open("GET", url, true);
+    request.onload = parse;
+    request.send();
 }

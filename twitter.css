@@ -1,0 +1,56 @@
+.root.timeline.twitter-timeline {
+    background-color: #333;
+}
+li.tweet {
+    margin: 0;
+    padding: 6px 6px 6px 47px;
+}
+a.expand {
+    display: none;
+}
+div.footer { display: none }
+
+div.stream,div.root.timeline { width: auto !important; }
+
+.timeline { max-width: 100% !important; }
+div.stream {overflow-y: hidden !important; }
+img.avatar { width: 40px !important; height: 40px !important; left: -47px !important;}
+
+html, body, .SandboxRoot, h1, h2, h3, blockquote, p, ol, ul, li, iframe, button {
+      font: normal normal normal 1.0em sans-serif !important;
+}
+
+.e-entry-title, .p-name {
+    font-size: 1.0em !important;
+    line-height: 1.2em !important;
+}
+iframe[id^='twitter-widget-'] {
+    width: 100% !important;
+}
+
+time { color: #5f9fbc !important; }
+
+.thm-dark .customisable,
+.thm-dark .customisable:link,
+.thm-dark .customisable:visited,
+.thm-dark .customisable:hover,
+.thm-dark .customisable:focus,
+.thm-dark .customisable:active,
+.thm-dark .customisable-highlight:hover,
+.thm-dark .customisable-highlight:focus,
+.thm-dark a:hover .customisable-highlight,
+.thm-dark a:focus .customisable-highlight {
+    color: #5f9fbc;
+}
+
+.customisable-border {
+    /*border-right: 0px;*/
+    border: 0px;
+}
+
+.p-nickname {
+    color: #5f9fbc;
+}
+.p-name {
+    font-size: 1.1em !important;
+}
