@@ -7,6 +7,7 @@ function drawstatus(st) {
     if (open) {
 	var people = st.sensors.people_now_present.names;
 	document.getElementById('here').innerHTML = "Here ("+people.length+"): "+people.join(', ');
+	document.getElementById('here').style.display = 'inline';
     } else {
 	document.getElementById('here').style.display = 'none';
     }
