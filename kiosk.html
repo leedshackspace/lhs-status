@@ -51,10 +51,8 @@
 
     <script src="cam.js"></script>
     <script>
-      (function() {
-      var el=document.getElementById("cam");
-      cam(el);
-      })();
+      var cam = new CamController(document.getElementById("cam"), 15000);
+      cam.startRotation();
     </script>
 
     <script src="status.js"></script>
