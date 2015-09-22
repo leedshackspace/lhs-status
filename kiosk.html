@@ -7,7 +7,7 @@
   <body>
     <div id="header">
       <img src="logo.svg" style="width:1.2em; height:1.2em; position: relative; top: 0.15em; left: 0.1em">
-      <span id=space>Leeds Hackspace</span><span id=status> · <span id=temp></span> · <span id=state></span> <span id=here></span></span> <span id=time></span>
+      <span id="space">Leeds Hackspace</span><span id="status"> · <span id="temp"></span> · <span id="state"></span> <span id="here"></span></span> <span id="time"></span>
     </div>
     <table>
       <tr>
@@ -49,12 +49,10 @@
       })();
     </script>
 
-    <script src="cam.js"></script>
+    <script src="CamController.js"></script>
     <script>
-      (function() {
-      var el=document.getElementById("cam");
-      cam(el);
-      })();
+      var camController = new CamController(document.getElementById("cam"), 15000);
+      camController.startRotation();
     </script>
 
     <script src="status.js"></script>
@@ -66,6 +64,7 @@
       <div id="bigmessage-text"></div>
     </div>
     <script src="irc/bigtext.js"></script>
+    <script src="irc/cam.js"></script>
 
   </body>
 </html>

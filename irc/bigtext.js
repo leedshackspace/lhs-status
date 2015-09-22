@@ -17,6 +17,6 @@ BigMessage.prototype.hide = function() {
 
 var bigMsg = new BigMessage();
 
-window.ircCommandHandlers['bigtext'] = function(args) {
+registerIrcCommandHandler('bigtext', function(args) {
     bigMsg.show(args.join(' '));
-}
+});
