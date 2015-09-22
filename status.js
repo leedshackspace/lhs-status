@@ -24,7 +24,7 @@ function drawtime() {
 
 function getstatus() {
 //    var url='statfus.php'
-    var url='https://www.leedshackspace.org.uk/status.php';
+    var url='http://www.leedshackspace.org.uk/status.php';
     var backoff=10;
     var request = new XMLHttpRequest();
     request.open("GET", url, true);
@@ -37,7 +37,7 @@ function getstatus() {
 	setTimeout(getstatus, backoff*1000);
 	backoff *= 2;
 	document.getElementById('status').style.display = 'none';
-	document.getElementById('space').innerHTML+='?';
+	//document.getElementById('space').innerHTML+='?';
     };
     request.send();
 }
