@@ -49,10 +49,10 @@
       })();
     </script>
 
-    <script src="cam.js"></script>
+    <script src="CamController.js"></script>
     <script>
-      var cam = new CamController(document.getElementById("cam"), 15000);
-      cam.startRotation();
+      var camController = new CamController(document.getElementById("cam"), 15000);
+      camController.startRotation();
     </script>
 
     <script src="status.js"></script>
@@ -64,6 +64,7 @@
       <div id="bigmessage-text"></div>
     </div>
     <script src="irc/bigtext.js"></script>
+    <script src="irc/cam.js"></script>
 
   </body>
 </html>

@@ -1,5 +1,9 @@
 window.ircCommandHandlers = {};
 
+function registerIrcCommandHandler(cmdName, handler) {
+    window.ircCommandHandlers[cmdName] = handler;
+}
+
 window.addEventListener('message', function(e) {
     var commandSegments = e.data.split(' ');
     

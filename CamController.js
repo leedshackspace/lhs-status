@@ -19,11 +19,31 @@ function CamController(el, rotateDelay) {
 
 CamController.prototype.nextCam = function() {
     this.currentCam = (this.currentCam+1) % this.rotateCams.length;
-    console.log('Rotating to cam ' + this.cams[this.rotateCams[this.currentCam]].title);
+    this.switchTo(this.rotateCams[this.currentCam]);
+}
+
+CamController.prototype.startRotation = function() {
+    if (!this.rotateInterval) {
+        console.log('Starting camera rotation');
+        this.rotateInterval = window.setInterval(this.nextCam.bind(this), this.rotateDelay);
+    }
+}
+
+CamController.prototype.stopRotation = function() {
+    console.log('Stopping camera rotation');
+    window.clearInterval(this.rotateInterval);
+    this.rotateInterval = null;
+}
+
+CamController.prototype.switchTo = function(cameraName) {
+    if (!this.cams.hasOwnProperty(cameraName)) {
+        console.log('Nonexistent camera ' + cameraName);
+    }
+    console.log('Switching to cam ' + this.cams[cameraName].title);
 
     var img = new Image();
     img.addEventListener('load', function() {
-        console.log('Loaded cam ' + this.cams[this.rotateCams[this.currentCam]].title);
+        console.log('Loaded cam ' + this.cams[cameraName].title);
         this.element.replaceChild(img, this.element.querySelector('img'));
     }.bind(this));
 
@@ -32,16 +52,5 @@ CamController.prototype.nextCam = function() {
         setTimeout(this.nextCam.bind(this), 1000);
     }.bind(this));
 
-    img.src = this.cams[this.rotateCams[this.currentCam]].url;
-}
-
-CamController.prototype.startRotation = function() {
-    if (this.rotateInterval !== null) {
-        this.rotateInterval = window.setInterval(this.nextCam.bind(this), this.rotateDelay);
-    }
-}
-
-CamController.prototype.stopRotation = function() {
-    window.clearInterval(this.rotateInterval);
-    this.rotateInterval = null;
+    img.src = this.cams[cameraName].url;
 }
