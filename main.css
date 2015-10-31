@@ -88,6 +88,12 @@ a:visited { color: #707070; }
     height: 30px;
 }
 
+#cam-ref {
+    float: right;
+    font-size: 10pt;
+    font-family: monospace;
+}
+
 #header {
     width: 1254px;
     height: 36px;
