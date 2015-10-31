@@ -30,7 +30,12 @@
 	</td>
 	<td>
 	  <div id="list" class=pane></div>
-	  <div id="cam" class=pane><img></div>
+	  <div id="cam" class=pane>
+      <div id="cam-caption">
+        <span id="cam-name"></span>
+      </div>
+      <img>
+    </div>
 	  <!--<div id="music" class=pane>Now playing</div>-->
 	</td>
       </tr>
@@ -51,7 +56,7 @@
 
     <script src="CamController.js"></script>
     <script>
-      var camController = new CamController(document.getElementById("cam"), 15000);
+      var camController = new CamController(document.getElementById("cam"), document.getElementById("cam-name"), 15000);
       camController.startRotation();
     </script>
 

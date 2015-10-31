@@ -76,6 +76,18 @@ a:visited { color: #707070; }
     height: 100%;
     object-fit: contain;
 }
+
+#cam-caption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+    color: white;
+    padding: 5px 8px;
+    height: 30px;
+}
+
 #header {
     width: 1254px;
     height: 36px;
