@@ -1,5 +1,7 @@
-function CamController(el, rotateDelay) {
-    this.element = el;
+function CamController(camElem, camNameElem, camRefElem, rotateDelay) {
+    this.imgElement = camElem;
+    this.nameElem = camNameElem;
+    this.refElem = camRefElem;
     this.rotateDelay = rotateDelay;
 
     this.cams = {
@@ -44,7 +46,9 @@ CamController.prototype.switchTo = function(cameraName) {
     var img = new Image();
     img.addEventListener('load', function() {
         console.log('Loaded cam ' + this.cams[cameraName].title);
-        this.element.replaceChild(img, this.element.querySelector('img'));
+        this.imgElement.replaceChild(img, this.imgElement.querySelector('img'));
+        this.nameElem.innerHTML = this.cams[cameraName].title;
+        this.refElem.innerHTML = cameraName;
     }.bind(this));
 
     img.addEventListener('error', function() {
