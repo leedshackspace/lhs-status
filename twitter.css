@@ -11,7 +11,8 @@ a.expand {
 div.footer { display: none }
 
 div.stream,div.root.timeline { width: auto !important; }
-
+.timeline-Widget { max-width: 100% !important; }
+.timeline-viewport { width: auto !important; overflow-y: hidden !important; }
 .timeline { max-width: 100% !important; }
 div.stream {overflow-y: hidden !important; }
 img.avatar { width: 40px !important; height: 40px !important; left: -47px !important;}
@@ -25,7 +26,7 @@ html, body, .SandboxRoot, h1, h2, h3, blockquote, p, ol, ul, li, iframe, button 
     line-height: 1.2em !important;
 }
 iframe[id^='twitter-widget-'] {
-    width: 100% !important;
+    width: 100% !important; max-width: 100% !important;
 }
 
 time { color: #5f9fbc !important; }
