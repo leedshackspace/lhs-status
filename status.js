@@ -5,7 +5,7 @@ function drawstatus(st) {
     document.getElementById('temp').innerHTML = temp.value+temp.unit;
     var open = st.state.open;
     if (open) {
-	var people = st.sensors.people_now_present.names;
+	var people = st.sensors.people_now_present[0].names;
 	document.getElementById('here').innerHTML = "Here ("+people.length+"): "+people.join(', ');
 	document.getElementById('here').style.display = 'inline';
     } else {
