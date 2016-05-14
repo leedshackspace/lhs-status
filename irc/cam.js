@@ -15,6 +15,8 @@ function CamIrcConnector(controller) {
                 break;
 
             case 'view':
+            case 'show':
+            case 'switch':
                 // Switch to a particular camera temporarily, then resume rotation
                 if (args.length === 1) {
                     this.viewCam(args[0]);
@@ -22,6 +24,7 @@ function CamIrcConnector(controller) {
                 break;
 
             case 'resume':
+            case 'rotate':
                 // Resume rotating through cameras
                 this.rotateCams();
                 break;
