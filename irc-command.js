@@ -35,7 +35,7 @@ window.addEventListener('message', function(e) {
 
         case 'message':
             if (e.data.text[0] === '^') {
-                handleMessageLine(a.slice(1));
+                handleMessageLine(e.data.text.slice(1));
             }
             break;
     }
