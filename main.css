@@ -16,6 +16,10 @@ body {
     color: white;
 }
 
+.hide {
+    display: none;
+}
+
 #space {
     font-weight: bold;
     font-size: 1.2em;
@@ -98,6 +102,38 @@ a:visited { color: #707070; }
     color: white;
     padding: 5px 8px;
     height: 30px;
+}
+
+#cam-rotate-status {
+    margin-right: 5px;
+}
+
+#cam-wait-timer svg {
+    width: 16px; height: 16px;
+    transform: rotate(-90deg);
+    background: transparent;
+    border-radius: 50%;
+}
+
+#cam-wait-timer .edge {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 2;
+}
+
+#cam-wait-timer .pie {
+    fill: transparent;
+    stroke: white;
+    stroke-width: 16;
+    stroke-dasharray: 0 50;
+}
+
+@keyframes fillup {
+  to { stroke-dasharray: 50 50; }
+}
+
+#cam-wait-timer .animate {
+    animation: fillup 5s linear 1 forwards;
 }
 
 #cam-ref {
