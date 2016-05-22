@@ -1,7 +1,9 @@
-function CamController(camElem, camNameElem, camRefElem, rotateDelay) {
+function CamController(camElem, camNameElem, camRefElem, camPauseIconElem, camWaitTimerElem, rotateDelay) {
     this.imgElement = camElem;
     this.nameElem = camNameElem;
     this.refElem = camRefElem;
+    this.pauseElem = camPauseIconElem;
+    this.waitTimerElem = camWaitTimerElem;
     this.rotateDelay = rotateDelay;
     this.shouldRotate = false;
 
@@ -27,7 +29,9 @@ CamController.prototype.nextCam = function() {
             this.rotateTimeout = window.setTimeout(this.nextCam.bind(this), 1000);
         } else if (this.shouldRotate) {
             this.rotateTimeout = window.setTimeout(this.nextCam.bind(this), this.rotateDelay);
+            this.resetWaitTimer(this.rotateDelay);
         }
+        this.updateStatus();
     }.bind(this));
 }
 
@@ -35,7 +39,7 @@ CamController.prototype.startRotation = function() {
     if (this.rotateTimeout) {
         window.clearTimeout(this.rotateTimeout);
     }
-    
+
     console.log('Starting camera rotation');
     this.shouldRotate = true;
     this.nextCam();
@@ -46,6 +50,7 @@ CamController.prototype.stopRotation = function() {
     window.clearTimeout(this.rotateTimeout);
     this.rotateTimeout = null;
     this.shouldRotate = false;
+    this.updateStatus();
 }
 
 CamController.prototype.switchTo = function(cameraName, cb /* err */) {
@@ -77,7 +82,9 @@ CamController.prototype.switchTo = function(cameraName, cb /* err */) {
 
 CamController.prototype.fixOnCam = function(camName) {
     this.stopRotation();
-    this.switchTo(camName);
+    this.switchTo(camName, function (err) {
+        this.updateStatus();
+    }.bind(this));
 }
 
 CamController.prototype.lingerOnCam = function(camName) {
@@ -88,5 +95,27 @@ CamController.prototype.lingerOnCam = function(camName) {
         }
 
         this.rotateTimeout = window.setTimeout(this.startRotation.bind(this), 30000);
+        this.resetWaitTimer(30000);
+        this.updateStatus();
     }.bind(this));
+}
+
+CamController.prototype.updateStatus = function() {
+    if (this.rotateTimeout) {
+        this.pauseElem.classList.add('hide');
+        this.waitTimerElem.classList.remove('hide');
+    } else {
+        this.pauseElem.classList.remove('hide');
+        this.waitTimerElem.classList.add('hide');
+    }
+}
+
+CamController.prototype.resetWaitTimer = function(durationMs) {
+    // Reset the CSS animation back to the start
+    var pie = this.waitTimerElem.querySelector('.pie');
+    pie.classList.remove('animate');
+    pie.style.animationDuration = durationMs/1000 + 's';
+    window.setTimeout(function () {
+        pie.classList.add('animate');
+    }, 10); // arbitrary amount of time to allow the browser to render the element without the animation applied
 }
