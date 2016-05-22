@@ -11,47 +11,47 @@
     </div>
     <table>
       <tr>
-	<td>
-	  <div id="twitter" class=pane>
-	    <a class="twitter-timeline"  href="https://twitter.com/leedshackspace"
-	       data-widget-id="549942374190055424"
-	       data-chrome="noheader nofooter noscrollbar"
-	       height=400>Tweets by @leedshackspace</a>
+        <td>
+          <div id="twitter" class=pane>
+            <a class="twitter-timeline"  href="https://twitter.com/leedshackspace"
+               data-widget-id="549942374190055424"
+               data-chrome="noheader nofooter noscrollbar"
+               height=400>Tweets by @leedshackspace</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-	  </div>
-	  <script src="twitter.js"></script>
-	  <script>
-	    twitter_fixup(document.getElementById('twitter'), "twitter.css");
-	  </script>
+          </div>
+          <script src="twitter.js"></script>
+          <script>
+            twitter_fixup(document.getElementById('twitter'), "twitter.css");
+          </script>
 
-	  <div id="irc" class=pane>
-	    <iframe id="irc-frame" src="http://localhost:8080"></iframe>
-	  </div>
-	</td>
-	<td>
-	  <div id="list" class=pane></div>
-	  <div id="cam" class=pane>
-      <div id="cam-caption">
-        <span id="cam-name"></span>
-        <span id="cam-ref"></span>
-      </div>
-      <img>
-    </div>
-	  <!--<div id="music" class=pane>Now playing</div>-->
-	</td>
+          <div id="irc" class=pane>
+            <iframe id="irc-frame" src="http://localhost:8080"></iframe>
+          </div>
+        </td>
+        <td>
+          <div id="list" class=pane></div>
+          <div id="cam" class=pane>
+            <div id="cam-caption">
+              <span id="cam-name"></span>
+              <span id="cam-ref"></span>
+            </div>
+            <img>
+          </div>
+          <!--<div id="music" class=pane>Now playing</div>-->
+        </td>
       </tr>
     </table>
     <script src="rss.js"></script>
     <script src="date.js"></script>
     <script>
       (function() {
-      var el=document.getElementById("list");
-      function draw() {
-      window.setTimeout(draw, 120*1000);
-      // topics.xml is reverse proxied via Apache to Google Groups
-      rss("topics.xml", el);
-      }
-      draw();
+        var el=document.getElementById("list");
+        function draw() {
+          window.setTimeout(draw, 120*1000);
+          // topics.xml is reverse proxied via Apache to Google Groups
+          rss("topics.xml", el);
+        }
+        draw();
       })();
     </script>
 
