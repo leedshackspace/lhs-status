@@ -124,30 +124,30 @@ a:visited { color: #707070; }
 
 @keyframes bm-blink {
     0% {
-    	color: blue;
-    	background-color: yellow;
+        color: blue;
+        background-color: yellow;
     }
     50% {
-	    color: yellow;
-	    background-color: blue;
+        color: yellow;
+        background-color: blue;
     }
     100% {
-	    color: blue;
-	    background-color: yellow;
+        color: blue;
+        background-color: yellow;
     }
 }
 @-webkit-keyframes bm-blink {
     0% {
-	    color: blue;
-	    background-color: yellow;
+        color: blue;
+        background-color: yellow;
     }
     50% {
-	    color: yellow;
-	    background-color: blue;
+        color: yellow;
+        background-color: blue;
     }
     100% {
-	    color: blue;
-	    background-color: yellow;
+        color: blue;
+        background-color: yellow;
     }
 }
 
