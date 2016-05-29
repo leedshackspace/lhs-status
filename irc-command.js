@@ -44,7 +44,7 @@ window.addEventListener('message', function(e) {
 
 function handleMessageLine(line) {
     var commandSegments = line.split(' ');
-    
+
     if (window.ircCommandHandlers.hasOwnProperty(commandSegments[0].toLowerCase())) {
         window.ircCommandHandlers[commandSegments[0]](commandSegments.slice(1));
     }
