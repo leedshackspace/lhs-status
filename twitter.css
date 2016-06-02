@@ -1,16 +1,19 @@
 .root.timeline.twitter-timeline {
     background-color: #333;
 }
+
 li.tweet {
     margin: 0;
     padding: 6px 6px 6px 47px;
 }
+
 a.expand {
     display: none;
 }
+
 div.footer { display: none }
 
-div.stream,div.root.timeline { width: auto !important; }
+div.stream, div.root.timeline { width: auto !important; }
 .timeline-Widget { max-width: 100% !important; }
 .timeline-viewport { width: auto !important; overflow-y: hidden !important; }
 .timeline { max-width: 100% !important; }
@@ -18,13 +21,14 @@ div.stream {overflow-y: hidden !important; }
 img.avatar { width: 40px !important; height: 40px !important; left: -47px !important;}
 
 html, body, .SandboxRoot, h1, h2, h3, blockquote, p, ol, ul, li, iframe, button {
-      font: normal normal normal 1.0em sans-serif !important;
+    font: normal normal normal 1.0em sans-serif !important;
 }
 
 .e-entry-title, .p-name {
     font-size: 1.0em !important;
     line-height: 1.2em !important;
 }
+
 iframe[id^='twitter-widget-'] {
     width: 100% !important; max-width: 100% !important;
 }
@@ -52,6 +56,7 @@ time { color: #5f9fbc !important; }
 .p-nickname {
     color: #5f9fbc;
 }
+
 .p-name {
     font-size: 1.1em !important;
 }
