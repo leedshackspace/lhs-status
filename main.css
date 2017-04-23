@@ -69,16 +69,16 @@ a:visited { color: #707070; }
 
 #twitter {
     width: 700px;
-    height: 414px;
+    height: 404px;
     left: 0px;
     top: 36px;
 }
 
 #list {
-    height: 300px;/*234px;*/
+    height: 310px;/*234px;*/
     left: 0px;
     width: 700px;
-    top: 460px;
+    top: 450px;
 /*    left: 718px;
     top: 36px;*/
 }

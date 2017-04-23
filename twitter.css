@@ -15,8 +15,13 @@ div.footer { display: none }
 
 div.stream, div.root.timeline { width: auto !important; }
 .timeline-Widget { max-width: 100% !important; }
-.timeline-viewport { width: auto !important; overflow-y: hidden !important; }
+.timeline-viewport { width: auto !important; overflow-y: hidden !important; height: 420px !important; }
 .timeline { max-width: 100% !important; }
+.timeline-tweet { padding: 4px; position: relative; font-size: 110%; }
+.timeline-tweet-brand { display: none; }
+.timeline-tweet-actions { display: none; }
+.timeline-tweet-metadata { position: absolute; top:0; width: 100%;  }
+.timeline-tweet-timestamp { position: relative; top: 8px; float: right; padding-right: 10px; font-size: 100%; }
 div.stream {overflow-y: hidden !important; }
 img.avatar { width: 40px !important; height: 40px !important; left: -47px !important;}
 
