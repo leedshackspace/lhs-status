@@ -18,7 +18,7 @@ function fmtdate(indate) {
             sameday = false;
     });
 //    return date.toLocaleFormat(sameday ? '%X' : '%x');
-    return date.toString(sameday ? 'hh:mm' : 'd MMM');
+    return date.toString(sameday ? 'HH:mm' : 'd MMM');
 }
 
 function el_with_class(type, parent, className, text) {
@@ -78,6 +78,9 @@ function rss(url, el) {
         }
 
         threadlist.sort(function(a,b) { return b.date-a.date; });
+
+	while (el.hasChildNodes())
+	    el.removeChild(el.lastChild);
 
         for (var i=0; i<threadlist.length; i++) {
             var j=threadlist[i];
