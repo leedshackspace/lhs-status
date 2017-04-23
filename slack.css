@@ -1,0 +1,53 @@
+body {
+    font-family: sans-serif;
+    background: #333; /*black;*/
+    color: white;
+    font-size: 1.25em;
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
+.ts {
+    display: table-cell;
+    width: 5.6em;
+    font-family: monospace;
+    font-size: 110%;
+}
+.att {
+    padding-left: .5em;
+    border-left: 1px solid white;
+}
+div.msg {
+    display: inline;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+div.line {
+    display: table;
+    clear: both;
+}
+.user {
+    font-weight: bold;
+}
+a, a:visited {
+       color: #8888ff;
+   }
+.att img {
+    float: right;
+    padding-left: .5em;
+    max-height: 200px;
+    max-width: 800px;
+}
+.separator {
+    font-size: 125%;
+    font-weight: 700;
+    text-align: center;
+    height: .5em;
+    border-bottom: 2px solid white;
+    margin-bottom: 1em;
+    margin-top: .5em;
+}
+.separator:first-line {
+    height: 1em;
+    background-color: black;
+}
