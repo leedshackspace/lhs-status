@@ -7,7 +7,7 @@ body {
     padding: 0;
     margin: 0;
     margin-left: -3px;
-    width: 1362px;
+    width: 1365px;
     height: 768px;
     overflow: hidden;
     font-family: sans-serif;
@@ -55,29 +55,32 @@ a:visited { color: #707070; }
 .rss-date { float: right; margin-right: -8px;}
 
 #irc {
-    width: 708px;
-    height: 416px;
-    left: 0px;
-    top: 346px;
+    width: 640px;
+    height: 724px;
+    left: 710px;
+    top: 36px;
 }
 
 #irc-frame {
     border: 0;
-    width: 708px;
-    height: 416px;
+    width: 640px;
+    height: 720px;
 }
 
 #twitter {
-    width: 708px;
-    height: 300px;
+    width: 700px;
+    height: 414px;
     left: 0px;
     top: 36px;
 }
 
 #list {
-    height: 234px;
-    left: 718px;
-    top: 36px;
+    height: 300px;/*234px;*/
+    left: 0px;
+    width: 700px;
+    top: 460px;
+/*    left: 718px;
+    top: 36px;*/
 }
 
 #cam {

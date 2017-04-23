@@ -23,14 +23,15 @@
           <script>
             twitter_fixup(document.getElementById('twitter'), "twitter.css");
           </script>
-
-          <div id="irc" class="pane">
-            <iframe id="irc-frame" src="http://localhost:8080"></iframe>
-          </div>
+          <div id="list" class="pane"></div>
         </td>
         <td>
-          <div id="list" class="pane"></div>
-          <div id="cam" class="pane">
+
+          <div id="irc" class="pane">
+            <!--<iframe id="irc-frame" src="http://localhost:8080"></iframe>-->
+	<iframe id="irc-frame" src="slack.html" style="font-size: 1.4em"></iframe>
+          </div>
+<!--          <div id="cam" class="pane">
             <div id="cam-caption">
               <span id="cam-rotate-status">
                 <span id="cam-pause-icon">
@@ -50,7 +51,7 @@
               <span id="cam-ref"></span>
             </div>
             <img>
-          </div>
+          </div>-->
           <!--<div id="music" class=pane>Now playing</div>-->
         </td>
       </tr>
@@ -63,7 +64,7 @@
         function draw() {
           window.setTimeout(draw, 120*1000);
           // topics.xml is reverse proxied via Apache to Google Groups
-          rss("topics.xml", el);
+          rss("topics.xml?num=50", el);
         }
         draw();
       })();
@@ -78,13 +79,13 @@
     <script src="status.js"></script>
     <script>getstatus()</script>
 
-    <script src="irc-command.js"></script>
+<!--    <script src="irc-command.js"></script>
 
     <div id="bigmessage">
       <div id="bigmessage-text"></div>
     </div>
     <script src="irc/bigtext.js"></script>
     <script src="irc/cam.js"></script>
-
+-->
   </body>
 </html>
